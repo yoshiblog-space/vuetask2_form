@@ -30,19 +30,19 @@
             <div class="birthcontent">
               <div class="select" >
                 <select>
-                  <option v-for="i in 100" v-bind:value="i + 1920" v-bind:key="i">{{ (i + 1920) | wareki }}</option>
+                  <option v-for="year in formYears" v-bind:key="year">{{ year }}</option>
                 </select>
               </div>
               <p class="birthdate">年</p>
               <div class="select">
                 <select>
-                  <option v-for="month in 12" v-bind:key="month">{{ month }}</option>  
+                  <option v-for="month in formmonths" v-bind:key="month">{{ month }}</option>  
                 </select>
               </div>
               <p class="birthdate">月</p>
               <div class="select">
                 <select>
-                  <option v-for="day in 31" v-bind:key="day">{{ day }}</option>
+                  <option v-for="day in formdays" v-bind:key="day">{{ day }}</option>
                 </select>
               </div>
               <p class="birthdate">日</p>
@@ -61,24 +61,14 @@
   </div>
 </template>
 <script>
+import formDate from '../definition';
+
 export default {
   data () {
     return {
-    }
-  },
-  filters: {
-    wareki(y) {
-      let result;
-      if (y > 2018) {
-        result = `${y} (令和${y-2018}年)`;
-      } else if (y > 1988) {
-        result = `${y} (平成${y-1988}年)`;
-      } else if (y > 1925) {
-        result = `${y} (昭和${y-1925}年)`;
-      } else if (y > 1911) {
-        result = `${y} (大正${y-1911}年)`;
-      }
-      return result;
+      formYears : formDate.year,
+      formmonths : formDate.month,
+      formdays : formDate.date
     }
   }
 }

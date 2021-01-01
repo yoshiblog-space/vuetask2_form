@@ -8,13 +8,13 @@
             <div class="has-background-info tagposition">
               <p class="is-family-sans-serif has-text-weight-light has-text-white spantext">STEP1</p>
             </div>
-            <p class="py-2 has-text-weight-light has-text-grey headtext"><font-awesome-icon :icon="['fas', 'address-card']" />お客様の情報を入力してください</p>
+            <p class="py-2 has-text-weight-light has-text-grey headtext"><font-awesome-icon :icon="['fas', 'address-card']"/>お客様の情報を入力してください</p>
           </th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td  class="contentsize">
+          <td class="contentsize">
             <p class="has-text-link contenttitle">-性別-</p>
             <div class="control contenttitle selectbox" id="gender">
               <label class="radio">
@@ -36,13 +36,13 @@
               <p class="birthdate">年</p>
               <div class="select">
                 <select>
-                  <option v-for="month in formmonths" v-bind:key="month">{{ month }}</option>  
+                  <option v-for="month in formMonths" v-bind:key="month">{{ month }}</option>  
                 </select>
               </div>
               <p class="birthdate">月</p>
               <div class="select">
                 <select>
-                  <option v-for="day in formdays" v-bind:key="day">{{ day }}</option>
+                  <option v-for="day in formDays" v-bind:key="day">{{ day }}</option>
                 </select>
               </div>
               <p class="birthdate">日</p>
@@ -62,13 +62,12 @@
 </template>
 <script>
 import formDate from '../definition';
-
 export default {
   data () {
     return {
       formYears : formDate.year,
-      formmonths : formDate.month,
-      formdays : formDate.date
+      formMonths : formDate.month,
+      formDays : formDate.date
     }
   }
 }

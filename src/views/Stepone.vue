@@ -18,30 +18,30 @@
             <p class="has-text-link contenttitle">-性別-</p>
             <div class="control contenttitle selectbox" id="gender">
               <label class="radio">
-                <input type="radio" name="foobar">
+                <input type="radio" name="foobar" value="男性" v-model="steponeans.gender">
                 男性
               </label>
               <label class="radio">
-                <input type="radio" name="foobar">
+                <input type="radio" name="foobar" value="女性" v-model="steponeans.gender">
                 女性
               </label>
             </div>
             <p class="has-text-link contenttitle">-生年月日-</p>
             <div class="birthcontent">
               <div class="select" >
-                <select>
+                <select v-model="steponeans.birthyear">
                   <option v-for="year in formYears" v-bind:key="year">{{ year }}</option>
                 </select>
               </div>
               <p class="birthdate">年</p>
               <div class="select">
-                <select>
+                <select v-model="steponeans.birthmonth">
                   <option v-for="month in formMonths" v-bind:key="month">{{ month }}</option>  
                 </select>
               </div>
               <p class="birthdate">月</p>
               <div class="select">
-                <select>
+                <select v-model="steponeans.birthday">
                   <option v-for="day in formDays" v-bind:key="day">{{ day }}</option>
                 </select>
               </div>
@@ -52,12 +52,13 @@
         </tr>
       </tbody>
     </table>
-    <router-link to="/steptwo">
-      <button class="btnposition button is-primary">
-        次へ進む<strong>></strong>
-      </button>
-    </router-link> 
-
+    <div class="changepage" v-if="noImput" kye="check">
+      <router-link to="/steptwo">
+        <button class="btnposition button is-primary" @click="registerone">
+          次へ進む<strong>></strong>
+        </button>
+      </router-link> 
+    </div>
   </div>
 </template>
 <script>
@@ -67,7 +68,23 @@ export default {
     return {
       formYears : formDate.year,
       formMonths : formDate.month,
-      formDays : formDate.date
+      formDays : formDate.date,
+      steponeans:{
+        gender: '',
+        birthyear: '',
+        birthmonth: '',
+        birthday: '',
+      }
+    }
+  },
+  computed:{
+    noImput(){
+      return this.steponeans.gender != '' && this.steponeans.birthyear != '' && this.steponeans.birthmonth != '' && this.steponeans.birthday != ''
+    }
+  },
+  methods: {
+    registerone() {
+      this.$store.commit('stepone',this.steponeans)
     }
   }
 }
@@ -119,6 +136,10 @@ table, td, th {
 }
 .selectbox{
   text-align:left;
+}
+.changepage{
+  display: flex;
+  justify-content: center;
 }
 </style>
 

@@ -1,23 +1,33 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+// 初期表示ページ
+import Stepone from "../views/Stepone.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
     path: "/",
-    name: "Home",
-    component: Home
+    name: "Stepone",
+    component: Stepone
   },
   {
-    path: "/about",
-    name: "About",
+    path: "/steptwo",
+    name: "Steptwo",
     // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
+    // this generates a separate chunk (steptwo.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
+      import(/* webpackChunkName: "steptwo" */ "../views/Steptwo.vue")
+  },
+  {
+    path: "/stepthree",
+    name: "Stepthree",
+    // route level code-splitting
+    // this generates a separate chunk (Stepthree.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () =>
+      import(/* webpackChunkName: "stepthree" */ "../views/Stepthree.vue")
   }
 ];
 

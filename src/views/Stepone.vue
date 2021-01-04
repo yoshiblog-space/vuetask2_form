@@ -18,30 +18,30 @@
             <p class="has-text-link contenttitle">-性別-</p>
             <div class="control contenttitle selectbox" id="gender">
               <label class="radio">
-                <input type="radio" name="foobar" value="男性" v-model="steponeans.gender">
+                <input type="radio" name="foobar" value="男性" v-model="answeredStepOne.inputGender">
                 男性
               </label>
               <label class="radio">
-                <input type="radio" name="foobar" value="女性" v-model="steponeans.gender">
+                <input type="radio" name="foobar" value="女性" v-model="answeredStepOne.inputGender">
                 女性
               </label>
             </div>
             <p class="has-text-link contenttitle">-生年月日-</p>
             <div class="birthcontent">
               <div class="select" >
-                <select v-model="steponeans.birthyear">
+                <select v-model="answeredStepOne.inputBirthYear">
                   <option v-for="year in formYears" v-bind:key="year">{{ year }}</option>
                 </select>
               </div>
               <p class="birthdate">年</p>
               <div class="select">
-                <select v-model="steponeans.birthmonth">
+                <select v-model="answeredStepOne.inputBirthMonth">
                   <option v-for="month in formMonths" v-bind:key="month">{{ month }}</option>  
                 </select>
               </div>
               <p class="birthdate">月</p>
               <div class="select">
-                <select v-model="steponeans.birthday">
+                <select v-model="answeredStepOne.inputBirthDay">
                   <option v-for="day in formDays" v-bind:key="day">{{ day }}</option>
                 </select>
               </div>
@@ -52,10 +52,11 @@
         </tr>
       </tbody>
     </table>
-    <div class="changepage" v-if="noImput" kye="check">
+    <div class="changepage" v-if="checked" kye="check">
       <router-link to="/steptwo">
-        <button class="btnposition button is-primary" @click="registerone">
+        <button class="btnposition button is-primary" @click="registerStepOneAnswer">
           次へ進む<strong>></strong>
+          
         </button>
       </router-link> 
     </div>
@@ -69,23 +70,24 @@ export default {
       formYears : formDate.year,
       formMonths : formDate.month,
       formDays : formDate.date,
-      steponeans:{
-        gender: '',
-        birthyear: '',
-        birthmonth: '',
-        birthday: '',
+      answeredStepOne:{
+        inputGender: '',
+        inputBirthYear: '',
+        inputBirthMonth: '',
+        inputBirthDay: '',
       }
     }
   },
   computed:{
-    noImput(){
-      return this.steponeans.gender != '' && this.steponeans.birthyear != '' && this.steponeans.birthmonth != '' && this.steponeans.birthday != ''
+    checked(){
+      return this.answeredStepOne.inputGender != '' && this.answeredStepOne.inputBirthYear != '' && this.answeredStepOne.inputBirthMonth != '' && this.answeredStepOne.inputBirthDay != ''
     }
   },
   methods: {
-    registerone() {
-      this.$store.commit('stepone',this.steponeans)
-    }
+    registerStepOneAnswer() {
+      this.$store.commit('commitStepOneAnswer',this.answeredStepOne)
+      
+    }   
   }
 }
 </script>

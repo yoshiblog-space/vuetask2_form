@@ -16,7 +16,7 @@
         <tr>
           <td  class="contentsize">
             <p class="has-text-link contenttitle">-ご相談内容-</p>
-            <textarea rows="20" cols="108" v-model="stepthreeans.requesttext"></textarea>
+            <textarea rows="20" cols="108" v-model="answeredStepThree.inputDetailConsultation"></textarea>
           </td>
         </tr>
       </tbody>
@@ -31,7 +31,7 @@
       </div>
       <div>
         <router-link to="/stepfour">
-          <button class="btnposition button is-primary" @click="registerthree">
+          <button class="btnposition button is-primary" @click="registerStepThreeAnswer">
             次へ進む<strong>></strong>
           </button>
         </router-link> 
@@ -45,14 +45,14 @@ export default {
     name:'stepthird',
     data () {
     return {
-      stepthreeans:{
-        requesttext: ''
+      answeredStepThree:{
+        inputDetailConsultation: ''
       }
     }
   },
   methods:{
-    registerthree() {
-      this.$store.commit('stepthree',this.stepthreeans)
+    registerStepThreeAnswer() {
+      this.$store.commit('commitStepThreeAnswer',this.answeredStepThree)
     }
   }
 }

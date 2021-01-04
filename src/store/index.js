@@ -5,57 +5,56 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    gender: '',
-    birthyear: '',
-    birthmonth: '',
-    birthday: '',
-    firsta: '',
-    seconda: '',
-    thirda: '',
-    requesttext: ''
+    stockedDataGender: '',
+    stockedDataBirthYear: '',
+    stockedDataBirthMonth: '',
+    stockedDataBirthDay: '',
+    stockedDataFirstQuestionAnswer: '',
+    stockedDataSecondQuestionAnswer: '',
+    stockedDataThirdQuestionAnswer: '',
+    stockedDataDetailsOfConsultation: ''
   },
   getters: {
-    gender(state){
-      return state.gender
+    geteDataGender(state){
+      return state.stockedDataGender
     },
-    birthyear(state){
-      return state.birthyear
+    getDataBirthYear(state){
+      return state.stockedDataBirthYear
     },
-    birthmonth(state){
-      return state.birthmonth
+    getDataBirthMonth(state){
+      return state.stockedDataBirthMonth
     },
-    birthday(state){
-      return state.birthday
+    getDataBirthDay(state){
+      return state.stockedDataBirthDay
     },
-    firsta(state){
-      return state.firsta
+    getFirstQuestionAnswered(state){
+      return state.stockedDataFirstQuestionAnswer
     },
-    seconda(state){
-      return state.seconda
+    getSecondQuestionAnswered(state){
+      return state.stockedDataSecondQuestionAnswer
     },
-    thirda(state){
-      return state.thirda
+    getThirdQuestionAnswered(state){
+      return state.stockedDataThirdQuestionAnswer
     },
-    requesttext(state){
-      return state.requesttext
+    getDetailsOfConsultation(state){
+      return state.stockedDataDetailsOfConsultation
     }
   },
   mutations: {
-    stepone (state, steponeans){
-      state.gender = steponeans.gender,
-      state.birthyear = steponeans.birthyear,
-      state.birthmonth = steponeans.birthmonth,
-      state.birthday = steponeans.birthday
+    commitStepOneAnswer (state, answeredStepOne){
+      state.stockedDataGender = answeredStepOne.inputGender,
+      state.stockedDataBirthYear = answeredStepOne.inputBirthYear,
+      state.stockedDataBirthMonth = answeredStepOne.inputBirthMonth,
+      state.stockedDataBirthDay = answeredStepOne.inputBirthDay
     },
-    steptwo (state, steptwoans){
-      state.firsta = steptwoans.firsta,
-      state.seconda = steptwoans.seconda,
-      state.thirda = steptwoans.thirda
+    commitStepTwoAnswer (state, answeredStepTwo){
+      state.stockedDataFirstQuestionAnswer = answeredStepTwo.inputFirstQuestion,
+      state.stockedDataSecondQuestionAnswer = answeredStepTwo.inputSecondQuestion,
+      state.stockedDataThirdQuestionAnswer = answeredStepTwo.inputThirdQuestion
     },
-    stepthree (state,stepthreeans){
-      state.requesttext = stepthreeans.requesttext
+    commitStepThreeAnswer (state,answeredStepThree){
+      state.stockedDataDetailsOfConsultation = answeredStepThree.inputDetailConsultation
     }
-    
   },
   actions: {},
   modules: {}

@@ -19,39 +19,39 @@
               <p class="has-text-link contenttitle">現在、生命保険に加入されていますか？</p>
               <div class="control contenttitle selectbox" id="gender">
                 <label class="radio">
-                  <input type="radio" name="firstq" value="はい" v-model="steptwoans.firsta">
+                  <input type="radio" name="firstq" value="はい" v-model="answeredStepTwo.inputFirstQuestion">
                   はい
                 </label>
                 <label class="radio">
-                  <input type="radio" name="firstq" value="いいえ" v-model="steptwoans.firsta">
+                  <input type="radio" name="firstq" value="いいえ" v-model="answeredStepTwo.inputFirstQuestion">
                   いいえ
                 </label>
               </div>
             </div>
             <transition>
-              <div v-if="steptwoans.firsta!=''" key="check1">
+              <div v-if="answeredStepTwo.inputFirstQuestion!=''" key="check1">
                 <p class="has-text-link contenttitle">現在、入院中ですか？または、最近３ヵ月以内に医師の診察・検査の結果、入院・手術をすすめられたことはありますか？</p>
                 <div class="control contenttitle selectbox" id="gender">
                   <label class="radio">
-                    <input type="radio" name="secondq" value="はい" v-model="steptwoans.seconda">はい
+                    <input type="radio" name="secondq" value="はい" v-model="answeredStepTwo.inputSecondQuestion">はい
                   </label>
                   <label class="radio">
-                    <input type="radio" name="secondq" value="いいえ" v-model="steptwoans.seconda">
+                    <input type="radio" name="secondq" value="いいえ" v-model="answeredStepTwo.inputSecondQuestion">
                     いいえ
                   </label>
                 </div>
               </div>
             </transition>
             <transition>
-              <div v-if="steptwoans.seconda!=''" key="check2">
+              <div v-if="answeredStepTwo.inputSecondQuestion!=''" key="check2">
                 <p class="has-text-link contenttitle">過去５年以内に、病気やけがで、手術をうけたことまたは継続して７日以上の入院をしたことがありますか？</p>
                 <div class="control contenttitle selectbox" id="gender">
                   <label class="radio">
-                    <input type="radio" name="thridq" value="はい" v-model="steptwoans.thirda">
+                    <input type="radio" name="thridq" value="はい" v-model="answeredStepTwo.inputThirdQuestion">
                     はい
                   </label>
                   <label class="radio">
-                    <input type="radio" name="thridq" value="いいえ" v-model="steptwoans.thirda">
+                    <input type="radio" name="thridq" value="いいえ" v-model="answeredStepTwo.inputThirdQuestion">
                     いいえ
                   </label>
                 </div>
@@ -69,9 +69,9 @@
           </button>
         </router-link> 
       </div>
-      <div v-if="steptwoans.thirda!=''" key="check3">
+      <div v-if="answeredStepTwo.inputThirdQuestion!=''" key="check3">
         <router-link to="/stepthree">
-          <button class="btnposition button is-primary" @click="registertwo">
+          <button class="btnposition button is-primary" @click="registerStepTwoAnswer">
             次へ進む<strong>></strong>
           </button>
         </router-link>
@@ -85,16 +85,16 @@ export default {
     name:'stepsecond',
     data () {
     return {
-      steptwoans:{
-        firsta: '',
-        seconda: '',
-        thirda: ''
+      answeredStepTwo:{
+        inputFirstQuestion: '',
+        inputSecondQuestion: '',
+        inputThirdQuestion: ''
       }
     }
   },
   methods:{
-    registertwo() {
-      this.$store.commit('steptwo', this.steptwoans)
+    registerStepTwoAnswer() {
+      this.$store.commit('commitStepTwoAnswer', this.answeredStepTwo)
     }
   }
 }
